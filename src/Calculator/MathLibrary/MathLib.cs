@@ -35,7 +35,7 @@ namespace MathLibrary
             throw new NotImplementedException();
         }
 
-        public double Sqrt(double number, double degree)
+        public double Root(double number, double degree)
         {
             throw new NotImplementedException();
         }
