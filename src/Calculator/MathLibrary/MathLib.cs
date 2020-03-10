@@ -3,39 +3,39 @@ using System;
 
 namespace MathLibrary
 {
-    public class MathLib
+    public static class MathLib
     {
-        public double Add(double v1, double v2)
+        public static double Add(double v1, double v2)
         {
             throw new NotImplementedException();
         }
 
-        public double Sub(double v1, double v2)
+        public static double Sub(double v1, double v2)
         {
             throw new NotImplementedException();
         }
 
-        public double Mul(double v1, double v2)
+        public static double Mul(double v1, double v2)
         {
             throw new NotImplementedException();
         }
 
-        public double Div(double v1, double v2)
+        public static double Div(double v1, double v2)
         {
             throw new NotImplementedException();
         }
 
-        public double Fact(double num)
+        public static double Fact(double num)
         {
             throw new NotImplementedException();
         }
 
-        public double Pow(double number, double power)
+        public static double Pow(double number, double exponent)
         {
             throw new NotImplementedException();
         }
 
-        public double Root(double number, double degree)
+        public static double Root(double number, double degree)
         {
             throw new NotImplementedException();
         }
