@@ -6,7 +6,6 @@ namespace MathLibraryTests
 {
     public class AdvancedFunctionsTests
     {
-
         /// <summary>
         /// Tests of factorial
         /// </summary>
@@ -20,7 +19,7 @@ namespace MathLibraryTests
         }
 
         /// <summary>
-        /// Tests of factorial, that should throw ArgumentOutOfRangeException
+        /// Tests of factorial, that should throw ArgumentOutOfRangeException when <paramref name="num"/> is non Natural number except zero
         /// </summary>
         /// <param name="num">Number</param>
         [TestCase(0.2)]
@@ -39,13 +38,24 @@ namespace MathLibraryTests
         /// <param name="exponent">Exponent</param>
         /// <param name="expected">Expected result of test</param>
         [TestCase(-1.0, 0.0, 1.0)]
-        [TestCase(10.0, -10, 1E-10)]
-        [TestCase(21.0, 1.5, 96.2340895940726)]
         [TestCase(10.0, 500.0, double.PositiveInfinity)]
-        [TestCase(2.0, -5000.0, 0.0)]
         public void Pow(double number, double exponent, double expected)
         {
             Assert.That(MathLib.Pow(number, exponent), Is.EqualTo(expected).Within(1E-13));
+        }
+
+        /// <summary>
+        /// Tests of exponentiation, that should throw ArgumentOutOfRangeException when <paramref name="exponent"/> is non Natural number except zero
+        /// </summary>
+        /// <param name="number">Base</param>
+        /// <param name="exponent">Exponent</param>
+        [TestCase(0.5, 0.5)]
+        [TestCase(-10.0, -10.0)]
+        public void Pow_ShouldThrowArgumentOutOfRangeException(double number, double exponent) 
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                MathLib.Root(number, exponent)
+            );
         }
 
         /// <summary>
@@ -63,17 +73,19 @@ namespace MathLibraryTests
         }
 
         /// <summary>
-        /// Tests of nth-Root, that should throw ArgumentOutOfRangeException
-        /// </summary>E
+        /// Tests of nth-Root, that should throw ArgumentOutOfRangeException, when <paramref name="degree"/> is non Natural number or <paramref name="number"/> is a negative number
+        /// </summary>
         /// <param name="number">Radicant</param>
         /// <param name="degree">Degree</param>
         [TestCase(10, 0)]
         [TestCase(-10, 2)]
+        [TestCase(10.2, 10.2)]
+        [TestCase(-12.8, -2.0)]
         public void Root_ShouldThrowArgumentOutOfRangeException(double number, double degree)
         {
             Assert.Throws<ArgumentOutOfRangeException>(() =>
                    MathLib.Root(number, degree)
-               );
+            );
         }
     }
 }
