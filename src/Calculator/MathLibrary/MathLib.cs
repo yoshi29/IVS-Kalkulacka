@@ -8,8 +8,8 @@ namespace MathLibrary
         /// <summary>
         /// Adds two numbers
         /// </summary>
-        /// <param name="v1">First number</param>
-        /// <param name="v2">Second number</param>
+        /// <param name="v1">Addend</param>
+        /// <param name="v2">Addend</param>
         /// <returns>Addition result</returns>
         public static double Add(double v1, double v2)
         {
@@ -19,8 +19,8 @@ namespace MathLibrary
         /// <summary>
         /// Subtracts two numbers
         /// </summary>
-        /// <param name="v1">First number</param>
-        /// <param name="v2">Second number</param>
+        /// <param name="v1">Minuend</param>
+        /// <param name="v2">Subtrahend</param>
         /// <returns>Subtraction result</returns>
         public static double Sub(double v1, double v2)
         {
@@ -30,8 +30,8 @@ namespace MathLibrary
         /// <summary>
         /// Multiplies two numbers
         /// </summary>
-        /// <param name="v1">First number</param>
-        /// <param name="v2">Second number</param>
+        /// <param name="v1">Factor</param>
+        /// <param name="v2">Factor</param>
         /// <returns>Multiplication result</returns>
         public static double Mul(double v1, double v2)
         {
@@ -58,10 +58,13 @@ namespace MathLibrary
         /// <returns>Factorial result</returns>
         public static double Fact(double num)
         {
-            if (num < 0 || num > 12)    // limited to 12
-                throw new ArgumentException();
+            if (num > 170)
+                return double.PositiveInfinity;
 
-            int result = 1;
+            if (num < 0 || num % 1 != 0)
+                throw new ArgumentOutOfRangeException();
+
+            double result = 1;
 
             for (int i = 1; i <= num; i++)
                 result *= i;
@@ -76,15 +79,29 @@ namespace MathLibrary
         /// <param name="exponent">Exponent</param>
         /// <returns>Result after exponentiation</returns>
         public static double Pow(double number, double exponent)
+        { 
+            if (exponent < 0 || (number == 0 && exponent == 0) || exponent % 1 != 0)
+                throw new ArgumentOutOfRangeException();
+
+            if (number == 0)
+                return 0;
+
+            return CountPow(number, (int)exponent);
+        }
+
+        // Auxiliary function that recursively counts the power of given number
+        private static double CountPow(double number, int exponent)
         {
-            if (exponent < 0 || (number == 0 && exponent == 0))
-                throw new ArgumentException();
+            if (exponent == 0)
+                return 1;
 
-            double result = 1;
-            for (int i = 0; i < exponent; i++)
-                result *= number;
+            double half = CountPow(number, exponent / 2);
 
-            return result;
+            if (exponent % 2 == 0)
+                return half * half;
+
+            else
+                return number * half * half;
         }
 
         /// <summary>
@@ -95,18 +112,22 @@ namespace MathLibrary
         /// <returns>N-th root of given number</returns>
         public static double Root(double number, double degree)
         {
-            if ((number < 0 && degree % 2 == 0) || degree <= 0)
-                throw new ArgumentException();
+            if (degree <= 0 || degree % 1 != 0 || (number < 0 && degree % 2 == 0))
+                throw new ArgumentOutOfRangeException();
 
             double max = number;
             double min = 0;
             double mid = 0;
 
-            int max_iter = 1000;    // limited to 1000
+            bool stop = false;
+            double prev_mid = 0;
 
-            for (int i = 0; i < max_iter; i++)
+            while (!stop)
             {
                 mid = (max + min) / 2;
+
+                if (mid == prev_mid)    // We have reached the maximum precision
+                    stop = true;
 
                 double guess = Pow(mid, degree);
 
@@ -128,6 +149,8 @@ namespace MathLibrary
                     else
                         max = mid;
                 }
+
+                prev_mid = mid;
             }
             return mid;
         }
