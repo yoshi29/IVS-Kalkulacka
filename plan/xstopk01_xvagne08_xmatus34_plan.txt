@@ -1,8 +1,67 @@
-Tento soubor bude obsahovat:
+Plán práce na projektu
+======================
+Tým: Přeživší
+Členové: Jana Stopková (xstopk01), Filip Vágner (xvagne08), Tomáš Matušák (xmatus34)
+Pozn.: Názvy následujících úkolů odpovídají jednotlivým issues na GitHubu
 
--- stanovené termíny,
--- přidělení úkolů na projektu jednotlivým řešitelům,
--- zvolené komunikační kanály pro komunikaci v týmu a stanovená pravidla pro komunikaci (jsou-li nějaká),
--- zvolený systém pro správu verzí a hosting + informaci, jak do repozitáře mohou nahlédnout vyučující/cvičící (viz níže).
+Stanovené termíny:
+------------------
+19. 3. 2020
+-  #2 Testy pro matematickou knihovnu
 
-Alternativně lze odevzdat archiv xlogin01_xlogin02_xlogin03_xlogin04_plan.zip, který bude obsahovat libovolný počet souborů xlogin01_xlogin02_xlogin03_xlogin04_plan* ("*" zastupuje libovolný počet libovolných znaků, tedy např. ".mpp" či "01.jpg"), přičemž plán zde může být vytvořený v MS Projectu či jiném programu (není-li daný program ve škole dostupný, je nutno odevzdat i exportovanou verzi v PDF či jpg).
+27. 3. 2020
+- #3 Implementace matematické knihovny
+- #4 Tvorba GUI
+- #11 Generování náhodných čísel
+- #13 Převod výrazu do zpracovatelné podoby
+- #15 Zpracování výrazu (výpočet)
+
+3. 4. 2020
+- #9 Profiling matematické knihovny
+- #10 Propojení GUI s matematickou knihovnou
+
+10. 4. 2020
+- #5 Přidání nápovědy do systému
+- #8 Vytvoření Makefile
+- #12 Instalátor/Odinstalátor
+
+17. 4. 2020
+- #1 Mockup 
+- #6 Uživatelská dokumentace
+- #7 Vygenerování programové dokumentace
+
+Přidělení úkolů na projektu:
+----------------------------
+Všichni
+- #1 Mockup 
+
+Jana Stopková (xstopk01)
+- #2 Testy pro matematickou knihovnu
+- #8 Vytvoření Makefile
+- #10 Propojení GUI s matematickou knihovnou
+- #13 Převod výrazu do zpracovatelné podoby
+
+Filip Vágner (xvagne08)
+- #3 Implementace matematické knihovny
+- #9 Profiling matematické knihovny
+- #12 Instalátor/Odinstalátor
+- #13 Převod výrazu do zpracovatelné podoby
+- #15 Zpracování výrazu (výpočet)
+
+Tomáš Matušák (xmatus34)
+- #4 Tvorba GUI
+- #5 Přidání nápovědy do systému
+- #6 Uživatelská dokumentace
+- #7 Vygenerování programové dokumentace
+- #9 Profiling matematické knihovny
+- #11 Generování náhodných čísel
+
+Komunikační kanály:
+-------------------
+- Slack
+- Žádná speciální pravidla pro komunikaci nemáme
+
+Systém pro správu verzí
+-----------------------
+- Git, GitHub
+- Byl povolen přístup pro uživatele ivskontrola
