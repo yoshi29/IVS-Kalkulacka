@@ -69,7 +69,7 @@ namespace MathLibraryTests
         [TestCase(2.0, 1E+30, 1.0)]
         public void Root(double number, double degree, double expected)
         {
-            Assert.That(MathLib.Root(number, degree), Is.EqualTo(expected).Within(1E-10));
+            Assert.That(MathLib.Root(number, degree), Is.EqualTo(expected).Within(1E-8));
         }
 
         /// <summary>
@@ -86,6 +86,27 @@ namespace MathLibraryTests
             Assert.Throws<ArgumentOutOfRangeException>(() =>
                    MathLib.Root(number, degree)
             );
+        }
+
+        /// <summary>
+        /// Tests of absolute value
+        /// </summary>
+        /// <param name="number">Number</param>
+        /// <param name="expected">Expected result of test</param>
+        [TestCase(-2.15, 2.15)]
+        [TestCase(0.0, 0.0)]
+        [TestCase(42.0, 42.0)]
+        public void Abs(double number, double expected)
+        {
+            Assert.That(MathLib.Abs(number), Is.EqualTo(expected));
+        }
+
+        /// <summary>
+        /// Tests of random number generation
+        /// </summary>
+        public void Rnd()
+        {
+            Assert.That(MathLib.Rnd(), Is.InRange(0, 1));
         }
     }
 }

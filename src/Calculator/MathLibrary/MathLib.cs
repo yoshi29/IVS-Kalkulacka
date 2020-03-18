@@ -166,5 +166,10 @@ namespace MathLibrary
                 return -num;
             return num;
         }
+
+        public static bool Rnd()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
