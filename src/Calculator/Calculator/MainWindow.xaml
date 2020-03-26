@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="MainWindow" Height="500" Width="400.899" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MinWidth="300">
+    <Window.Resources>
+        <Storyboard x:Key="OnLoaded1"/>
+    </Window.Resources>
+    <Grid HorizontalAlignment="Left" Height="483.121" Margin="0,-15.254,0,0" VerticalAlignment="Top" Width="390.899" Background="White" OpacityMask="Black">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup"/>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="353*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="power" Content="^" HorizontalAlignment="Left" Height="52.84" Margin="270.906,39.604,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Grid.Row="1" Click="Button_Click"/>
+        <Button x:Name="mul" Content="*" HorizontalAlignment="Left" Height="52.842" Margin="212.003,155.848,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Grid.Row="1" Click="Button_Click"/>
+        <Button x:Name="div" Content="/" HorizontalAlignment="Left" Height="52.838" Margin="212.003,97.728,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Grid.Row="1" Click="Button_Click"/>
+        <Button x:Name="sub" Content="-" HorizontalAlignment="Left" Height="52.84" Margin="212.003,39.604,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="add" Content="+" HorizontalAlignment="Left" Height="52.839" Margin="212.003,223.042,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click" Grid.RowSpan="2"/>
+        <Button x:Name="Random_number" Content="Rand" HorizontalAlignment="Left" Height="52.839" Margin="91.001,164.92,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3"/>
+        <Button x:Name="factorial" Content="!" HorizontalAlignment="Left" Height="52.839" Margin="31.708,164.92,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click"/>
+        <Button x:Name="C" Grid.ColumnSpan="4" Content="C" HorizontalAlignment="Left" Height="52.839" Margin="10,164.92,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" RenderTransformOrigin="0.53,0.434" Click="Clean"/>
+        <Button x:Name="Delete" Content="Del" HorizontalAlignment="Left" Height="52.839" Margin="150.294,164.92,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Delete_Last"/>
+        <Button x:Name="nine" Content="9" HorizontalAlignment="Left" Height="52.839" Margin="91.001,223.042,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Grid.RowSpan="2" Click="Button_Click"/>
+        <Button x:Name="eight" Content="8" HorizontalAlignment="Left" Height="52.839" Margin="31.708,223.042,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Grid.RowSpan="2" Click="Button_Click"/>
+        <Button x:Name="seven" Grid.ColumnSpan="4" Content="7" HorizontalAlignment="Left" Height="52.839" Margin="10,223.042,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.RowSpan="2" Click="Button_Click"/>
+        <Button x:Name="six" Content="6" HorizontalAlignment="Left" Height="52.838" Margin="91.001,39.606,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="five" Content="5" HorizontalAlignment="Left" Height="52.838" Margin="31.708,39.606,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" RenderTransformOrigin="0.486,0.412" Grid.Column="3" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="four" Grid.ColumnSpan="4" Content="4" HorizontalAlignment="Left" Height="52.838" Margin="10,39.606,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="three" Content="3" HorizontalAlignment="Left" Height="52.84" Margin="91.001,97.726,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="two" Content="2" HorizontalAlignment="Left" Height="52.84" Margin="31.708,97.726,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="enter" Content="=" HorizontalAlignment="Left" Height="52.839" Margin="91.001,155.85,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Grid.Row="1" Click="Get_Result"/>
+        <Button x:Name="dot" Content="." HorizontalAlignment="Left" Height="52.839" Margin="31.708,155.85,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="one" Grid.ColumnSpan="4" Content="1" HorizontalAlignment="Left" Height="52.84" Margin="10,97.726,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="zero" Grid.ColumnSpan="4" Content="0" HorizontalAlignment="Left" Height="52.839" Margin="10,155.85,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="sqr_button" Content="√" HorizontalAlignment="Left" Height="52.839" Margin="270.906,223.042,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Grid.RowSpan="2" Click="square_root"/>
+        <Button x:Name="Right_bracket" Content=")" HorizontalAlignment="Left" Height="52.839" Margin="270.906,164.92,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click"/>
+        <Button x:Name="Left_Bracket" Content="(" HorizontalAlignment="Left" Height="52.839" Margin="212.003,164.92,0,0" VerticalAlignment="Top" Width="53.903" FontSize="18" Background="#FF6460FF" Foreground="White" BorderThickness="0" Grid.Column="3" Click="Button_Click"/>
+        <TextBox x:Name="result" Grid.Column="2" HorizontalAlignment="Left" Height="87" Margin="10,40.254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="355.795" FontSize="36" Grid.ColumnSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" TextOptions.TextFormattingMode="Display" SpellCheck.IsEnabled="True" Background="White" Text="0" TabIndex="0"/>
     </Grid>
 </Window>

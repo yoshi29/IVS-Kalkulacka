@@ -23,6 +23,61 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
+            result.Focus();
+            result.Select(result.Text.Length, 0);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            result.Focus();
+
+            if (result.Text == "0")
+            {
+                result.Text = String.Empty;
+
+
+            }
+
+            result.Text += button.Content;
+            result.Select(result.Text.Length, 0);
+        }
+
+        private void Clean(object sender, RoutedEventArgs e)
+        {
+            result.Focus();
+            result.Select(0, 0);
+            result.Text = String.Empty + "0";
+
+        }
+
+        private void Delete_Last(object sender, RoutedEventArgs e)
+        {
+            result.Focus();
+
+            result.Text = result.Text.ToString().Remove(result.Text.Length - 1);
+            if (result.Text == "")
+                result.Text = "0";
+
+            result.Select(result.Text.Length, 0);
+
+        }
+
+        private void square_root(object sender, RoutedEventArgs e)
+        {
+            result.Focus();
+            if (result.Text == "0")
+                result.Text = $"sqr(x,y)";
+            else
+                result.Text += $"sqr(x,y)";
+
+            result.Select(result.Text.Length - 4, 3); ///caret is set into sqr and text to overwrite is selected
+        }
+
+
+     
+
     }
-}
+
+
+}        
