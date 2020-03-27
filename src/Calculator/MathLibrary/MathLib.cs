@@ -166,10 +166,17 @@ namespace MathLibrary
                 return -num;
             return num;
         }
-
-        public static bool Rnd()
+        /// <summary>
+        /// Generates random number from 0 to 1
+        /// </summary>
+        /// <returns>Random number in string</returns>
+        public static double Rnd(double modulus = 2 ^ 64, double a = 6364136223846793005, double c = 1442695040888963407, double seed = 0)
         {
-            throw new NotImplementedException();
+
+            seed = DateTime.Now.Ticks;
+            seed = (a * seed + c) % modulus;
+            return seed/100;
+
         }
     }
 }
