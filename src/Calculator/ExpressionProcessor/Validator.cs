@@ -25,9 +25,9 @@ namespace ExpressionProcessor
         /// </summary>
         private static Dictionary<string, int> functions = new Dictionary<string, int>()
         {
-		    // name of the function, number of parameters
-		    {"abs", 1},
-            {"root", 2}
+            // name of the function, number of parameters
+            {"abs", 1},
+            {"root", 2},
         };
 
         /// <summary>
@@ -51,19 +51,6 @@ namespace ExpressionProcessor
         private static bool IsOp(char ch)
         {
             return IsOp(ch.ToString());
-        }
-
-        /// <summary>
-        /// Checks if a given string is a function.
-        /// </summary>
-        /// <param name="str">String we want to check</param>
-        /// <returns><c>True</c> if given string is a function</returns>
-        private static bool IsFunc(string str)
-        {
-            if (functions.ContainsKey(str))
-                return true;
-            else
-                return false;
         }
 
         /// <summary>
@@ -240,8 +227,16 @@ namespace ExpressionProcessor
                     if (sub_exp == "" || sub_exp[sub_exp.Length - 1] != ')')
                         return false;
 
-                    if (!IsValid(sub_exp, parameters)) // Recursively check if function parameters are valid
-                        return false;
+                    if (parameters == 0)
+                    {
+                        if (sub_exp != "()")
+                            return false;
+                    }
+                    else
+                    {
+                        if (!IsValid(sub_exp, parameters)) // Recursively check if function parameters are valid
+                            return false;
+                    } 
                 }
                 else
                     return false;
