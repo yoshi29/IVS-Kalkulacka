@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathLibrary", "MathLibrary\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathLibraryTests", "MathLibraryTests\MathLibraryTests.csproj", "{3BBFCA91-97F6-44A3-8037-68062E7026EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExprssionProcessor", "ExprssionProcessor\ExprssionProcessor.csproj", "{099D24CA-ECFF-4781-AE29-CB6FA499D45C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExprssionProcessor", "ExpressionProcessor\ExpressionProcessor.csproj", "{099D24CA-ECFF-4781-AE29-CB6FA499D45C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
