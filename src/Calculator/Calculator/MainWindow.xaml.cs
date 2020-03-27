@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,20 +24,19 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
+          
             result.Focus();
             result.Select(result.Text.Length, 0);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
+            System.Windows.Controls.Button button = (System.Windows.Controls.Button)sender;
             result.Focus();
 
             if (result.Text == "0")
             {
                 result.Text = String.Empty;
-
-
             }
 
             result.Text += button.Content;
@@ -74,9 +74,35 @@ namespace Calculator
             result.Select(result.Text.Length - 4, 3); ///caret is set into sqr and text to overwrite is selected
         }
 
+        private void Rnd_Gen(object sender, RoutedEventArgs e)
+        {
+            result.Focus();
+            if (result.Text == "0")
+            {
+                result.Text = String.Empty;
+            }
+            
+            result.Text = result.Text /* + function from library which return Rnd as string*/; 
+        }
 
-     
+        public string Get_Equation(object sender, RoutedEventArgs e)
+        {
 
+            return result.Text;
+        }
+      
+        private void Enter(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Get_Equation();/// here is what happans when Enter is pressed
+            }
+        }
+
+        private void Get_Equation(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 
 
