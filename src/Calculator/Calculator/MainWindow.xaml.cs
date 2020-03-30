@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -31,12 +30,12 @@ namespace Calculator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Controls.Button button = (System.Windows.Controls.Button)sender;
+            Button button = (Button)sender;
             result.Focus();
 
             if (result.Text == "0")
             {
-                result.Text = String.Empty;
+                result.Text = string.Empty;
             }
 
             result.Text += button.Content;
@@ -47,7 +46,7 @@ namespace Calculator
         {
             result.Focus();
             result.Select(0, 0);
-            result.Text = String.Empty + "0";
+            result.Text = string.Empty + "0";
 
         }
 
@@ -79,23 +78,22 @@ namespace Calculator
             result.Focus();
             if (result.Text == "0")
             {
-                result.Text = String.Empty;
+                result.Text = string.Empty;
             }
-            
-            result.Text = result.Text /* + function from library which return Rnd as string*/; 
+
+            result.Text = result.Text /* + function from library which return Rnd as string*/;
         }
 
-        public string Get_Equation(object sender, RoutedEventArgs e)
+        public void Get_Equation(object sender, RoutedEventArgs e)
         {
-
-            return result.Text;
+            //return result.Text;
         }
-      
+
         private void Enter(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                Get_Equation();/// here is what happans when Enter is pressed
+                //Get_Equation();/// here is what happans when Enter is pressed
             }
         }
 
