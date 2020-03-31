@@ -8,22 +8,22 @@ namespace ExpressionProcessor
         /// <summary>
         /// String of unary operators
         /// </summary>
-        private static string unary_op = "+-";
+        private static readonly string unary_op = "+-";
 
         /// <summary>
         /// String of binary operators
         /// </summary>
-        private static string binary_op = "*/^";
+        private static readonly string binary_op = "*/^";
 
         /// <summary>
         /// String of all operators
         /// </summary>
-        private static string operators = unary_op + binary_op;
+        private static readonly string operators = unary_op + binary_op;
 
         /// <summary>
         /// List of functions and number of their parameters
         /// </summary>
-        private static Dictionary<string, int> functions = new Dictionary<string, int>()
+        private static readonly Dictionary<string, int> functions = new Dictionary<string, int>()
         {
             // name of the function, number of parameters
             {"abs", 1},
@@ -163,14 +163,31 @@ namespace ExpressionProcessor
 
                 else if (char.IsDigit(exp[i]))
                 {
-                    int points = 0;
-                    while (i < len && (char.IsDigit(exp[i]) || exp[i] == '.'))  // Go through the whole number and check it
+                    bool P_exists = false;
+                    bool E_exists = false;
+                    while (i < len && (char.IsDigit(exp[i]) || exp[i] == '.' || exp[i] == 'e'))  // Go through the whole number and check it
                     {
                         if (exp[i] == '.')
-                            points++;
+                        {
+                            if (exp[i - 1] == 'e' || E_exists || P_exists)
+                                return false;
+                            P_exists = true;
+                        }
 
-                        if (points > 1)
-                            return false;
+                        else if (exp[i] == 'e')
+                        {
+                            if (exp[i - 1] == '.' || i == len - 1 || E_exists)
+                                return false;
+                            if (unary_op.Contains(exp[i + 1]))
+                            {
+                                i++;
+                                if (i == len - 1)
+                                    return false;
+                                if (!char.IsDigit(exp[i + 1]))
+                                    return false;
+                            }
+                            E_exists = true;
+                        }
                         i++;
                     }
                 }
@@ -202,8 +219,7 @@ namespace ExpressionProcessor
                         i++;
                     }
 
-                    int parameters;
-                    if (!functions.TryGetValue(func, out parameters))   // Check if the word is valid function name
+                    if (!functions.TryGetValue(func, out int parameters))   // Check if the word is valid function name
                         return false;
 
                     if (exp[i] != '(')
@@ -244,7 +260,7 @@ namespace ExpressionProcessor
 
             if (num_of_brackets != 0)
                 return false;
-
+            
             if (commas != num_of_param - 1)
             {
                 if (num_of_param != 0 || commas != 0)

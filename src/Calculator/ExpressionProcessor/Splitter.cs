@@ -9,12 +9,12 @@ namespace ExpressionProcessor
         /// <summary>
         /// String of unary operators
         /// </summary>
-        private static string unary_op = "+-";
+        private static readonly string unary_op = "+-";
 
         /// <summary>
         /// String of all operators
         /// </summary>
-        private static string operators = unary_op + "*/^";
+        private static readonly string operators = unary_op + "*/^";
 
 
         /// <summary>
@@ -58,9 +58,12 @@ namespace ExpressionProcessor
 
                 if (char.IsDigit(exp[i]))
                 {
-                    while (i < len && (char.IsDigit(exp[i]) || exp[i] == '.'))
+                    while (i < len && (char.IsDigit(exp[i]) || exp[i] == '.' || exp[i] == 'e'))
                     {
                         token += exp[i];
+
+                        if (exp[i] == 'e' && unary_op.Contains(exp[i + 1]))
+                            token += exp[++i];
                         i++;
                     }
                 }

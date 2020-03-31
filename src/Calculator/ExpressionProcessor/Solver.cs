@@ -10,17 +10,17 @@ namespace ExpressionProcessor
         /// <summary>
         /// String of unary operators
         /// </summary>
-        private static string unary_op = "+-";
+        private static readonly string unary_op = "+-";
 
         /// <summary>
         /// String of all operators
         /// </summary>
-        private static string operators = unary_op + "*/^";
+        private static readonly string operators = unary_op + "*/^";
 
         /// <summary>
         /// List of functions and number of their parameters
         /// </summary>
-        private static Dictionary<string, int> functions = new Dictionary<string, int>()
+        private static readonly Dictionary<string, int> functions = new Dictionary<string, int>()
         {
 		    // name of the function, number of parameters
 		    {"abs", 1},
@@ -76,17 +76,15 @@ namespace ExpressionProcessor
 
                     double arg1 = Convert.ToDouble(temp.ElementAt(i - 2));
                     double arg2 = Convert.ToDouble(temp.ElementAt(i - 1));
-                    double result;
-                    switch (oper)
+                    double result = oper switch
                     {
-                        case "+": result = MathLib.Add(arg1, arg2); break;
-                        case "-": result = MathLib.Sub(arg1, arg2); break;
-                        case "*": result = MathLib.Mul(arg1, arg2); break;
-                        case "/": result = MathLib.Div(arg1, arg2); break;
-                        case "^": result = MathLib.Pow(arg1, arg2); break;
-                        default: throw new System.ComponentModel.InvalidEnumArgumentException();
-                    }
-
+                        "+" => MathLib.Add(arg1, arg2),
+                        "-" => MathLib.Sub(arg1, arg2),
+                        "*" => MathLib.Mul(arg1, arg2),
+                        "/" => MathLib.Div(arg1, arg2),
+                        "^" => MathLib.Pow(arg1, arg2),
+                        _ => throw new System.ComponentModel.InvalidEnumArgumentException(),
+                    };
                     temp.RemoveAt(i);
                     temp.RemoveAt(i - 1);
                     temp[i - 2] = result.ToString();
