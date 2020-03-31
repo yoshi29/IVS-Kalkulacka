@@ -105,9 +105,9 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Calculates n-th root of given number using bisection method
+        /// Calculates n-th root of given number
         /// </summary>
-        /// <param name="number">Radicand (The number for which we want to calculate the n-th root)</param>
+        /// <param name="number">Radicand</param>
         /// <param name="degree">Degree of the root</param>
         /// <returns>N-th root of given number</returns>
         public static double Root(double number, double degree)
@@ -170,13 +170,11 @@ namespace MathLibrary
         /// Generates random number from 0 to 1
         /// </summary>
         /// <returns>Random number in string</returns>
-        public static double Rnd(double modulus = 2 ^ 64, double a = 6364136223846793005, double c = 1442695040888963407, double seed = 0)
+        public static double Rnd(double modulus = 97.27, double a = 6364136223846793005, double c = 1442695040888963407)
         {
-
-            seed = DateTime.Now.Ticks;
+            double seed = DateTime.Now.Ticks + Guid.NewGuid().GetHashCode();
             seed = (a * seed + c) % modulus;
             return seed/100;
-
         }
     }
 }
