@@ -124,7 +124,6 @@ namespace ExpressionProcessor
                     double result = MathLib.Fact(arg);
                     temp.RemoveAt(i);
                     temp[i - 1] = result.ToString();
-                    break;
                 }
 
                 else

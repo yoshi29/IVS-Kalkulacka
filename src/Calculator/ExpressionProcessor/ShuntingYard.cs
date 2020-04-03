@@ -81,6 +81,7 @@ namespace ExpressionProcessor
 
                 else if (token == ")") //token is right parenthesis
                 {
+                    bool closed = false;
                     while (stack.Count != 0 && stack.Peek() != "(") //moving operators from stack to output
                     {
                         output.Add(stack.Peek());
@@ -88,6 +89,7 @@ namespace ExpressionProcessor
                     }
                     if (stack.Count != 0 && stack.Peek() == "(")
                     {
+                        closed = true;
                         stack.Pop();
                     }
                     if (stack.Count != 0 && functions.Contains(stack.Peek())) //token is function
@@ -95,7 +97,7 @@ namespace ExpressionProcessor
                         output.Add(stack.Peek());
                         stack.Pop();
                     }
-                    else if (stack.Count == 0) //left parenthesis was not found on stack
+                    else if (stack.Count == 0 && !closed) //left parenthesis was not found on stack
                     {
                         throw new ArgumentException("Unclosed expression");
                     }
