@@ -5,4 +5,8 @@
     <UseWPF>true</UseWPF>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExpressionProcessor\ExpressionProcessor.csproj" />
+    <ProjectReference Include="..\MathLibrary\MathLibrary.csproj" />
+  </ItemGroup>
 </Project>

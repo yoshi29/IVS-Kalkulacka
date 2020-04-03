@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 
 namespace ExpressionProcessor
 {
@@ -26,8 +28,12 @@ namespace ExpressionProcessor
         /// <exception cref="ArgumentException">Thrown when <paramref name="tokens"/> contains unclosed expression</exception>
         public static List<string> ToPostfix(List<string> tokens)
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB");
+
             List<string> output = new List<string>();
             Stack<string> stack = new Stack<string>();
+            //CultureInfo culture = CultureInfo.InvariantCulture;
+            //NumberStyles style = NumberStyles.Float;
 
             foreach (string token in tokens)
             {
