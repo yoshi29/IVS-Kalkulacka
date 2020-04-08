@@ -1,6 +1,7 @@
 obj/
 bin/
 .vs/
+*.user
 
 # Compiled Object files
 *.slo
