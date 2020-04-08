@@ -7,14 +7,29 @@ namespace StandardDeviation
 {
     class Program
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
-            // Get numbers from stdin
-            List<double> numbers = GetNumbers();
+            List<double> numbers;
+            
+            // Generate random numbers if parameter '-r' is set
+            if (args.Length > 0 && args[0] == "-r")
+            {
+                int number;
+                if (args.Length > 1)
+                {
+                    if (!int.TryParse(args[1], out number))
+                        number = 1000;
+                }
+                else
+                    number = 1000;
 
-            // Generate random numbers
-            // List<double> numbers = GenRndNumbers(1000);
-       
+                numbers = GenRndNumbers(number);
+            }
+
+            // Get numbers from stdin
+            else
+                numbers = GetNumbers();
+
             try
             {
                 double result = CountStandardDev(numbers);
