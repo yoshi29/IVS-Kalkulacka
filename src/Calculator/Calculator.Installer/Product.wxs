@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <!-- Product ID -->
+  <?define ProductCode = "{B3372F6E-4464-4559-A27C-AB01B7DCE007}" ?>
+  
+  <!-- Upgrade ID -->
+  <?define UpgradeCode = "{EB695637-FE3A-4C84-A137-9FEBFDCBE969}" ?>
+
+  <!-- Product definition -->
+	<Product Id="$(var.ProductCode)"
+           Name="!(loc.ProductName)"
+           Language="!(loc.Language)"
+           Version="$(var.BuildVersion)"
+           Manufacturer="!(loc.Manufacturer)"
+           UpgradeCode="$(var.UpgradeCode)">
+
+    <!-- Package details -->
+		<Package InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Manufacturer="!(loc.Manufacturer)"
+             />
+
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeErrorMessage)" />
+    
+    <!-- Include .cap file into .msi file -->
+		<MediaTemplate EmbedCab="yes" />
+
+    <!-- Main application icon -->
+    <Icon Id="icon.ico" SourceFile="$(var.Calculator.ProjectDir)\icon.ico" />
+
+    <!-- Use the icon for installer -->
+    <Property Id="ARPPRODUCTICON">icon.ico</Property>
+
+    <!-- UI -->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <Property Id="INSTALLDESKTOPSHORTCUT" Value="1" />
+    <Property Id="INSTALLSTARTMENUSHORTCUT" Value="1" />
+    <UIRef Id="CustomWixUI_InstallDir"/>
+
+    <!-- Change the default installer images -->
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\Assets\Background.bmp" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\Assets\Banner.bmp" />
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\license.rtf" />
+
+    <!-- Other components for installer -->
+		<Feature Id="ProductFeature" Title="Calculator" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="PublishedComponents" />
+		</Feature>
+    
+	</Product>
+
+</Wix>

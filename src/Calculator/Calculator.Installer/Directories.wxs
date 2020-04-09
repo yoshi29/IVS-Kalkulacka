@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      
+      <!-- StartMenu folder -->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="StartMenuFolder" Name="!(loc.FolderName)" />
+      </Directory>
+
+      <!-- Desktop folder -->
+      <Directory Id="DesktopFolder" Name="Desktop">
+      </Directory>
+    
+      <!-- Installation folder -->
+      <?if $(var.Platform)=x64 ?>
+          <Directory Id="ProgramFiles64Folder">
+            <Directory Id="INSTALLFOLDER" Name="!(loc.FolderName)" />
+          </Directory>
+      <?else?>
+          <Directory Id="ProgramFilesFolder">
+            <Directory Id="INSTALLFOLDER" Name="!(loc.FolderName)" />
+          </Directory>
+      <?endif?>
+      
+    </Directory>
+    
+  </Fragment>
+</Wix>

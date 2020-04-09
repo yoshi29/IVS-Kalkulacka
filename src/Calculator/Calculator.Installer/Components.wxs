@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <!-- Shortcuts -->
+      <ComponentRef Id="CalculatorShortcut" />
+      <ComponentRef Id="DesktopShortcut" />
+    </ComponentGroup>
+    
+    <DirectoryRef Id="INSTALLFOLDER" FileSource="..\Calculator\Bin\$(var.Configuration)\netcoreapp3.1\win-$(var.Platform)\publish\">
+
+      <!-- Desktop shortcut -->
+      <Component Id="DesktopShortcut" Guid="{76D83345-C06D-47B5-B57A-57E7D47CDA19}">
+        <Condition>INSTALLDESKTOPSHORTCUT</Condition>
+        <Shortcut Id="DesktopShortcut"
+                  Name="!(loc.ProductName)"
+                  Target="[INSTALLFOLDER]Calculator.exe"
+                  Directory="DesktopFolder"
+                  ShortName="Calc"
+                  Icon="icon.ico"
+                  />
+        <!-- Key for shortcut -->
+        <RegistryValue Id="RegDesktopShortcutKey"
+                       Root="HKCU"
+                       Key="SOFTWARE\!(loc.FolderName)"
+                       Name="DesktopShortcut"
+                       Value="1"
+                       Type="integer"
+                       KeyPath="yes"
+                       />
+      </Component>
+      
+      <!-- StartMenu shortcut -->
+      <Component Id="CalculatorShortcut" Guid="{4005F205-9144-453A-9D1C-0F339137867D}">
+        <Condition>INSTALLSTARTMENUSHORTCUT</Condition>
+        <Shortcut Id="CalculatorShortcut"
+                  Name="!(loc.ProductName)"
+                  Target="[INSTALLFOLDER]Calculator.exe"
+                  Directory="StartMenuFolder"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="icon.ico"
+                  />
+        
+        <!-- Key for shortcut -->
+        <RegistryValue Id="RegShortcutKey"
+                       Root="HKCU"
+                       Key="SOFTWARE\!(loc.FolderName)"
+                       Name="StartMenuShortcut"
+                       Value="1"
+                       Type="integer"
+                       KeyPath="yes"
+                       />
+        
+        <RemoveFolder Id="RemoveStartMenuFolder" Directory="StartMenuFolder" On="uninstall" />      
+      
+      </Component>
+      
+    </DirectoryRef>
+    
+  </Fragment>
+</Wix>

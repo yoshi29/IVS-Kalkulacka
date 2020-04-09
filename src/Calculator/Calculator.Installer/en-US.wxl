@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+	<String Id="ProductName">Calculator</String>
+  <String Id="FolderName">Calculator-IVS</String>
+  <String Id="Language">1033</String>
+  <String Id="Manufacturer">Prezivsi</String>
+
+  <String Id="DowngradeErrorMessage">A newer version of Calculator is already installed.</String>
+
+  <String Id="DesktopShortcutMessage">Create a desktop shortcut.</String>
+  <String Id="StartMenuShortcutMessage">Create a start menu shortcut.</String>
+  
+</WixLocalization>
