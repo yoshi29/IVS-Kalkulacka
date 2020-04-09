@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="400.899" 
+        Title="Calculator" Height="500" Width="400.899" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MinWidth="300">
     <Window.Resources>
         <Storyboard x:Key="OnLoaded1"/>
