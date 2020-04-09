@@ -34,12 +34,16 @@ namespace Calculator
 
         /// <summary>
         /// Add <paramref name="text"/> to result.Text to specific position. 
-        /// If result.Text contains only "0" character, delete this character.
+        /// In certain cases if result.Text contains only "0" character/"Error" string delete this character/string.
         /// </summary>
         /// <param name="text">Text that will be added to result.Text to specific position</param>
         private void AddToResult(string text)
         {
-            if ((result.Text == "0" && ! ".+-/*^!".Contains(text)) || result.Text == "Error")
+            if (result.SelectionLength > 0)
+            {
+                result.SelectedText = string.Empty;
+            }
+            if ((result.Text == "0" && ! ".+/*^!".Contains(text)) || result.Text == "Error")
             {
                 result.Text = string.Empty;
             }
@@ -58,6 +62,11 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -66,6 +75,11 @@ namespace Calculator
             AddToResult(button.Content.ToString());
         }
 
+        /// <summary>
+        /// Actions to take key is pressed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Enter(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if ((result.Text == "0" && !".+-/*^!".Contains(e.Key.ToString())) || result.Text == "Error")
@@ -78,6 +92,11 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Actions to take when "C" button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Clean(object sender, RoutedEventArgs e)
         {
             result.Focus();
@@ -85,6 +104,11 @@ namespace Calculator
             AddToResult("0");
         }
 
+        /// <summary>
+        /// Actions to take when "Del" button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Delete_Last(object sender, RoutedEventArgs e)
         {
             result.Focus();
@@ -93,36 +117,65 @@ namespace Calculator
             {
                 result.Text = result.Text.ToString().Remove(result.Text.Length - 1);
             }
-            if (result.Text == "")
+            if (result.Text == "" || result.Text == "Error")
                 result.Text = "0";
 
             result.Select(result.Text.Length, 0);
         }
 
+        /// <summary>
+        /// Actions to take when "=" button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Get_Equation(object sender, RoutedEventArgs e)
         {
             result.Focus();
-            result.Text = Process(result.Text); //TODO: Round to 9 decimal places
-            result.Select(result.CaretIndex + result.Text.Length, 0);
+            string res = Process(result.Text);
+            if (Double.TryParse(res, out double res_double)) {
+                result.Text = Math.Round(res_double, 9).ToString();
+                result.Select(result.CaretIndex + result.Text.Length, 0);
+            }
+            else
+            {
+                result.Text = "Error";
+            }
         }
 
+        /// <summary>
+        /// Actions to take when "√" button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Root(object sender, RoutedEventArgs e)
         {
             result.Focus();
-            AddToResult("root(x,y)");    
+            AddToResult("root(x,y)");
+            result.CaretIndex -= 4; //Set caret index after left bracket (4 characters)
+            result.Select(result.CaretIndex, 3); //Selection ends before right bracket (3 characters)
         }
 
+        /// <summary>
+        /// Actions to take when "Abs" button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Abs(object sender, RoutedEventArgs e)
         {
             result.Focus();
             AddToResult("abs(x)");
         }
 
+        /// <summary>
+        /// Actions to take when "Rnd" button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Rnd_Gen(object sender, RoutedEventArgs e)
         {
             result.Focus();
             CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
-            AddToResult(MathLib.Rnd().ToString("G", culture));
+            AddToResult(Math.Round(MathLib.Rnd(), 9).ToString("G", culture));
         }
     }
 }        
