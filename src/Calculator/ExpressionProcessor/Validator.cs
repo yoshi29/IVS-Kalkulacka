@@ -8,12 +8,12 @@ namespace ExpressionProcessor
         /// <summary>
         /// String of unary operators
         /// </summary>
-        private static readonly string unary_op = "+-";
+        private static readonly string unary_op = "+−";
 
         /// <summary>
         /// String of binary operators
         /// </summary>
-        private static readonly string binary_op = "*/^";
+        private static readonly string binary_op = "×÷^";
 
         /// <summary>
         /// String of all operators

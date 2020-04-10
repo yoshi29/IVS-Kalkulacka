@@ -1,4 +1,5 @@
-﻿using static ExpressionProcessor.ExpressionProcessor;
+﻿
+using static ExpressionProcessor.ExpressionProcessor;
 using MathLibrary;
 using System;
 using System.Collections.Generic;
@@ -193,6 +194,22 @@ namespace Calculator
             result.Focus();
             CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
             AddToResult(Math.Round(MathLib.Rnd(), 9).ToString("G", culture));
+        }
+
+        /// <summary>
+        /// Change certain characters in the text box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void result_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            int caretIndex = textBox.CaretIndex;
+            textBox.Text = textBox.Text.Replace(" ", "");
+            textBox.Text = textBox.Text.Replace("-", "−");
+            textBox.Text = textBox.Text.Replace("*", "×");
+            textBox.Text = textBox.Text.Replace("/", "÷");
+            textBox.CaretIndex = caretIndex;
         }
     }
 }        

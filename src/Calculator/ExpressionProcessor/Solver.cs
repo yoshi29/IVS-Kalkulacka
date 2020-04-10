@@ -10,12 +10,12 @@ namespace ExpressionProcessor
         /// <summary>
         /// String of unary operators
         /// </summary>
-        private static readonly string unary_op = "+-";
+        private static readonly string unary_op = "+−";
 
         /// <summary>
         /// String of all operators
         /// </summary>
-        private static readonly string operators = unary_op + "*/^";
+        private static readonly string operators = unary_op + "×÷^";
 
         /// <summary>
         /// List of functions and number of their parameters
@@ -79,9 +79,9 @@ namespace ExpressionProcessor
                     double result = oper switch
                     {
                         "+" => MathLib.Add(arg1, arg2),
-                        "-" => MathLib.Sub(arg1, arg2),
-                        "*" => MathLib.Mul(arg1, arg2),
-                        "/" => MathLib.Div(arg1, arg2),
+                        "−" => MathLib.Sub(arg1, arg2),
+                        "×" => MathLib.Mul(arg1, arg2),
+                        "÷" => MathLib.Div(arg1, arg2),
                         "^" => MathLib.Pow(arg1, arg2),
                         _ => throw new System.ComponentModel.InvalidEnumArgumentException(),
                     };

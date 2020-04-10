@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -12,10 +12,10 @@ namespace ExpressionProcessor
         new (string symbol, int precedence, bool rightAssociative)[] {
             ("!", 5, false),
             ("^", 4, true),
-            ("*", 3, false),
-            ("/", 3, false),
+            ("×", 3, false),
+            ("÷", 3, false),
             ("+", 2, false),
-            ("-", 2, false)
+            ("−", 2, false)
         }.ToDictionary(op => op.symbol);
 
         private static List<string> functions = new List<string> { "abs", "root" };

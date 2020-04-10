@@ -8,10 +8,11 @@ namespace ExpressionProcessor
     {
         public static string Process(string expression)
         {
-            List<string> tokens = Splitter.SplitToTokens(expression);
+            string exp = expression.ToLower();
+            List<string> tokens = Splitter.SplitToTokens(exp);
             string result = "";
 
-            if (!Validator.IsValid(expression))
+            if (!Validator.IsValid(exp))
             {
                 return "Error";
             }
