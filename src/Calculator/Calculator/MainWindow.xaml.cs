@@ -76,19 +76,33 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Actions to take key is pressed.
+        /// Actions to take when key is pressed.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Enter(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Enter(object sender, KeyEventArgs e)
         {
             if ((result.Text == "0" && !".+-/*^!".Contains(e.Key.ToString())) || result.Text == "Error")
             {
                 result.Text = string.Empty;
             }
-            if (e.Key == Key.Enter)
+            else if (e.Key == Key.Enter)
             {
                 Dispatcher.Invoke(() => Get_Equation(sender, new RoutedEventArgs()));
+            }
+        }
+
+        /// <summary>
+        /// Modifies the behavior of the backspace button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private new void PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Back)
+            {
+                e.Handled = true;
+                Dispatcher.Invoke(() => Delete_Last(sender, new RoutedEventArgs()));
             }
         }
 
@@ -113,12 +127,13 @@ namespace Calculator
         {
             result.Focus();
 
+            if (result.Text == "" || result.Text == "Error")
+                result.Text = "0";
+
             if (result.Text.Length != 0)
             {
                 result.Text = result.Text.ToString().Remove(result.Text.Length - 1);
             }
-            if (result.Text == "" || result.Text == "Error")
-                result.Text = "0";
 
             result.Select(result.Text.Length, 0);
         }
@@ -133,12 +148,14 @@ namespace Calculator
             result.Focus();
             string res = Process(result.Text);
             if (Double.TryParse(res, out double res_double)) {
-                result.Text = Math.Round(res_double, 9).ToString();
+                string rounded = Math.Round(res_double, 9).ToString(); ;
+                result.Text = rounded;
                 result.Select(result.CaretIndex + result.Text.Length, 0);
             }
             else
             {
                 result.Text = "Error";
+                result.Select(result.CaretIndex + result.Text.Length, 0);
             }
         }
 
