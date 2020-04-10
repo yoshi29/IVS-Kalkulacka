@@ -1,0 +1,25 @@
+﻿<Window x:Class="Calculator.Windowhelp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Nápověda" Height="450" Width="323" ResizeMode="NoResize">
+    <TextBlock  HorizontalAlignment="Center" Height="405" Margin="0,20,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="303">
+    <Bold>Použití:</Bold> <LineBreak></LineBreak>
+        Do kalkulačky lze psát pomocí tlačítek a klávesnice. <LineBreak></LineBreak> 
+        Pro binární operace zadejte číslo,operand,číslo a potvďtě tlačítkem = nebo klávesou enter. <LineBreak></LineBreak> 
+        Lze zapsat i delší příklady s použitím běžných matematických konvencí. <LineBreak></LineBreak>
+        U funkcí zadejte nejdříve funkci a poté čísla na příslušná místa. <LineBreak></LineBreak>
+        <LineBreak></LineBreak>
+        <LineBreak></LineBreak>
+        C - Smaže vše napsané; <LineBreak></LineBreak>
+        ! - faktorial, zadejte ve formátu číslo!. <LineBreak></LineBreak>
+        Rnd - Vygeneruje náhodné číslo mezi 0 a 1. <LineBreak></LineBreak>
+        Del - Smaže poslední zadaný znak. <LineBreak></LineBreak>
+        Odmocnina - Zadejte tlačítkem aplikace, formát root(x,y) kde x je odmocnitel a y je odmocněnec. <LineBreak></LineBreak>
+        Mocnina - Zadejte tlačítkem aplikace, formát x^y, kde x je základ a y mocnitel. <LineBreak></LineBreak>
+        Abs - Absolutní hodnota.
+       </TextBlock>
+</Window>

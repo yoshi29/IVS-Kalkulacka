@@ -211,5 +211,16 @@ namespace Calculator
             textBox.Text = textBox.Text.Replace("/", "÷");
             textBox.CaretIndex = caretIndex;
         }
+
+        /// <summary>
+        /// Opens help window when help button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Open_Help(object sender, RoutedEventArgs e)
+        {
+            Windowhelp newwin = new Windowhelp();
+            newwin.Show();
+        }
     }
 }        
