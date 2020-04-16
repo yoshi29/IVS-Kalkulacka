@@ -4,6 +4,9 @@ using System;
 
 namespace MathLibraryTests
 {
+    /// <summary>
+    /// Tests of basic functions of mathematical library
+    /// </summary>
     public class AdvancedFunctionsTests
     {
         /// <summary>

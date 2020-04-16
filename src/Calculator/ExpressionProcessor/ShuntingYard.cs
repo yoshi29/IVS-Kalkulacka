@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace ExpressionProcessor
 {
+    /// <summary>
+    /// Class implementing a shunting-yard algorithm
+    /// </summary>
     public class ShuntingYard
     {
         private static Dictionary<string, (string symbol, int precedence, bool rightAssociative)> operators =
@@ -32,8 +35,6 @@ namespace ExpressionProcessor
 
             List<string> output = new List<string>();
             Stack<string> stack = new Stack<string>();
-            //CultureInfo culture = CultureInfo.InvariantCulture;
-            //NumberStyles style = NumberStyles.Float;
 
             foreach (string token in tokens)
             {
