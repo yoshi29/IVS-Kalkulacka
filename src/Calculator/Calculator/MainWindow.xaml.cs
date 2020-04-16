@@ -83,7 +83,9 @@ namespace Calculator
         /// <param name="e"></param>
         private void Enter(object sender, KeyEventArgs e)
         {
-            if ((result.Text == "0" && !".+-/*^!".Contains(e.Key.ToString())) || result.Text == "Error")
+            if ((result.Text == "0" 
+                && ! new List<Key>() { Key.OemPeriod, Key.OemPlus, Key.OemMinus, Key.Multiply, Key.Divide, Key.Add, Key.Subtract}.Contains(e.Key))
+                || result.Text == "Error")
             {
                 result.Text = string.Empty;
             }
