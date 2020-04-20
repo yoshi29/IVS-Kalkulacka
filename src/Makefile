@@ -11,7 +11,7 @@ pack: clean
 	mkdir ..\..\$(FNAME)\install
 	mkdir ..\..\$(FNAME)\repo
 
-#TODO: Copy generated program documentation
+	if exist ..\refman.pdf copy ..\refman.pdf ..\..\$(FNAME)\doc\refman.pdf
 
 	if exist .\Calculator\Calculator.Installer\Calculator-Release-x86.msi copy .\Calculator\Calculator.Installer\Calculator-Release-x86.msi ..\..\$(FNAME)\install\Calculator-Release-x86.msi
 	if exist .\Calculator\Calculator.Installer\Calculator-Release-x64.msi copy .\Calculator\Calculator.Installer\Calculator-Release-x64.msi ..\..\$(FNAME)\install\Calculator-Release-x64.msi
