@@ -1,4 +1,5 @@
-xlogin01 100 (základ GUI a základní mat. operace)
-xlogin02 100 (pokročilé mat. operace)
-xlogin03 90 (profiling, instalátor)
-xlogin04 110 (testy, dokumentace)
+xstopk01 100 (testy pro mat. knihovnu, Makefile, propojení GUI s mat. knihovnou, převod výrazu do zpracovatelné podoby, mockup)
+
+xvagne08 100 (implementace mat. knihovny, profiling, instalátor/odinstalátor, převod výrazu do zpracovatelné podoby, mockup)
+
+xmatus34 100 (GUI, profiling, nápověda, uživatelská/programová dokumentace, generování náhodných čísel)
