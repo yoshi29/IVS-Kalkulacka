@@ -14,4 +14,4 @@ Tým: Přeživší
 Licence
 -------
 
-Tento program je poskytován...
+Tento program je poskytován pod GNU GPL v3.0, viz soubor LICENSE.
